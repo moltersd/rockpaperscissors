@@ -2,10 +2,32 @@
 //Get player Selection
   //  Create a box that allows a player to input rock, paper, or scissors
     //Make sure the player selection isn't case sensitive.
-    let computerChoice = "";
-    let choice = "";
+    let computerChoice = ""
+    let choice = ""
+    
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((button) => {
+        // and for each one we add a 'click' listener
+        button.addEventListener('click', () => {
+        choice = button.innerHTML.toLowerCase();
+        computerChoice = getComputerChoice();
+        const container = document.querySelector('#container');
+        const content = document.createElement('div');
+        content.classList.add('content');
+        content.textContent = `You chose ${choice}. The computer chose ${computerChoice}`
+        container.appendChild(content);
 
-function getPlayerChoice(){
+        const result = document.createElement('div');
+        content.classList.add('result');
+        result.textContent = `${playRound(choice,computerChoice)}`
+        container.appendChild(result);
+        });
+      });
+      
+    
+
+
+/*function getPlayerChoice(){
     let input = prompt("Please choose rock, paper, or scissors");
     choice = input;
     if((choice !="paper") && (choice !="scissors" ) && (choice != "rock")){
@@ -15,7 +37,8 @@ function getPlayerChoice(){
     else {console.log(`You chose ${choice}`)
         return choice};
         
-}
+}*/
+
 
 //Get computer Selection
 function getComputerChoice() {
@@ -82,12 +105,12 @@ function getComputerChoice() {
     Announce score at the end of each game
     when someone wins 5 games, declare them the winner
 */
-function game(bestOf) {
+/*function game(bestOf) {
     compCounter = 0;
     playerCounter = 0
     for (let i = 0 ; i< bestOf; i++){
-        const playerSelection = getPlayerChoice();
-        const computerSelection = getComputerChoice();
+        const playerSelection = choice;
+        const computerSelection = computerChoice
         text = playRound(playerSelection, computerSelection);
         console.log(text)
         if(text === "Computer Wins!!" ) {
@@ -108,8 +131,7 @@ function game(bestOf) {
     else if (compCounter = playerCounter){
         console.log(`It was a tie!`)
     }
-}
-game(7);
+}*/
 
 
 
